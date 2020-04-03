@@ -1,25 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 
-function App() {
+import MainPage from './pages/main/MainPage'
+
+interface AppProps {}
+
+const App:React.FC<AppProps> = props => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App">
+        <Helmet>
+          <title>Gifty</title>
+        </Helmet>
+        <Route exact path="/" component={MainPage} />
+      </div>
   );
 }
 
