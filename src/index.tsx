@@ -7,11 +7,9 @@ import { ApolloProvider } from '@apollo/react-hooks'
 import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.render(
-  <ApolloProvider client={client} >
     <BrowserRouter>
       <App />
-    </BrowserRouter>
-  </ApolloProvider>,
+    </BrowserRouter>,
   document.getElementById('root')
 );
 

@@ -1,42 +1,30 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import { useQuery } from '@apollo/react-hooks'
-import { gql } from 'apollo-boost'
+import styled from 'styled-components'
+import Collections from '../../components/collection/Collections'
 
 interface MainPageProps {}
 
 const MainPage: React.FC<MainPageProps> = () => {
     return (
-        <div>
+        <Box>
             <Helmet>
                 <title>My Title</title>
             </Helmet>
-            Main Page
-            <Users />
-        </div>
+            <Container>
+                <Collections />
+            </Container>
+        </Box>
     )
 }
 
-const USERS = gql`
-    {
-        users {
-            id
-            name
-        }
-    }
+const Box = styled.div``
+
+const Container = styled.div`
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
-
-const Users = () => {
-    const { loading, error, data } = useQuery(USERS)
-
-    if (loading) return <p>Loading...</p>
-    if (error) return <p>Error :(</p>
-
-    return data.users.map(({ id, name }) => (
-        <div key={id}>
-            {name}
-        </div>
-    ))
-}
 
 export default MainPage
